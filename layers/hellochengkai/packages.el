@@ -30,7 +30,8 @@
 ;;; Code:
 
 (defconst hellochengkai-packages
-  '(youdao-dictionary)
+  '( youdao-dictionary
+     helm-ag)
   "The list of Lisp packages required by the hellochengkai layer.
 
 Each entry is either:
@@ -63,6 +64,13 @@ Each entry is either:
     :init
     (spacemacs/set-leader-keys "oy" 'youdao-dictionary-search-at-point+)
     (spacemacs/set-leader-keys "ov" 'youdao-dictionary-play-voice-at-point)
+    )
+  )
+(defun hellochengkai/init-helm-ag()
+  (use-package helm-ag 
+    :defer t
+    :init
+    (spacemacs/set-leader-keys "ps" 'helm-do-ag-project-root)
     )
   )
 
