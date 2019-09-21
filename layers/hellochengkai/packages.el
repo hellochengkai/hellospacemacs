@@ -58,10 +58,39 @@ Each entry is either:
 
       - A list beginning with the symbol `recipe' is a melpa
         recipe.  See: https://github.com/milkypostman/melpa#recipe-format")
+
+
+
+(defcustom use-chinese-word-segmentation nil
+  "If Non-nil, support Chinese word segmentation(中文分词).
+
+See URL `https://github.com/xuchunyang/chinese-word-at-point.el' for more info."
+  :type 'boolean)
+
+
+(defun -region-or-word ()
+  "Return word in region or word at point."
+  (if (use-region-p)
+      (buffer-substring-no-properties (region-beginning)
+                                      (region-end))
+    (thing-at-point (if use-chinese-word-segmentation
+                        'chinese-or-other-word
+                      'word)
+                    t)))
+
+
+(defun youdao-dictionary-search-and-voice-at-point ()
+  (interactive)
+  (let ((word (-region-or-word)))
+    (if word
+        (funcall (youdao-dictionary-search-at-point+) (funcall (youdao-dictionary-play-voice-at-point)))
+      (message "Nothing to look up"))))
+
 (defun hellochengkai/init-youdao-dictionary ()
   (use-package youdao-dictionary
     :defer t
     :init
+    (spacemacs/set-leader-keys "ox" 'youdao-dictionary-search-and-voice-at-point)
     (spacemacs/set-leader-keys "oy" 'youdao-dictionary-search-at-point+)
     (spacemacs/set-leader-keys "ov" 'youdao-dictionary-play-voice-at-point)
     )
