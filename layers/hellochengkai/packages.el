@@ -96,7 +96,7 @@ See URL `https://github.com/xuchunyang/chinese-word-at-point.el' for more info."
     )
   )
 (defun hellochengkai/init-helm-ag()
-  (use-package helm-ag 
+  (use-package helm-ag
     :defer t
     :init
     (spacemacs/set-leader-keys "ps" 'helm-do-ag-project-root)

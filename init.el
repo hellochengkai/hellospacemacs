@@ -61,8 +61,9 @@ This function should only modify configuration layer settings."
                       version-control-diff-side 'left)
      gtags
      c-c++
-     helm
+;;     helm
      hellochengkai
+     linum
      )
 
    ;; List of additional packages that will be installed without being
@@ -352,7 +353,7 @@ It should only modify the values of Spacemacs settings."
    ;; Control line numbers activation.
    ;; If set to `t', `relative' or `visual' then line numbers are enabled in all
    ;; `prog-mode' and `text-mode' derivatives. If set to `relative', line
-   ;; numbers are relative. If set to `visual', line numbers are also relative,
+   ;; numbers are relative. If set to `visual', line numbers nilre also relative,
    ;; but lines are only visual lines are counted. For example, folded lines
    ;; will not be counted and wrapped lines are counted as multiple lines.
    ;; This variable can also be set to a property list for finer control:
@@ -367,7 +368,7 @@ It should only modify the values of Spacemacs settings."
    ;;   :size-limit-kb 1000)
    ;; When used in a plist, `visual' takes precedence over `relative'.
    ;; (default nil)
-   dotspacemacs-line-numbers t
+   dotspacemacs-line-numbers nil
 
    ;; Code folding method. Possible values are `evil' and `origami'.
    ;; (default 'evil)
